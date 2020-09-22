@@ -1,14 +1,17 @@
 import 'package:flutter/material.dart';
+import 'costanti.dart';
 
 class MyNews extends StatelessWidget {
   MyNews({
     @required this.title,
+    @required this.indexliste,
     //@required this.content
   });
 
   // Fields in a Widget subclass are always marked "final".
 
   final String title;
+  final int indexliste;
 
   //final String content;
 
@@ -55,6 +58,7 @@ class MyNews extends StatelessWidget {
                       icon: Icon(Icons.arrow_forward_ios),
                       tooltip: 'Leggi',
                       onPressed: () {
+                        indexliste_1 = indexliste;
                         Navigator.pushNamed(context, '/articoli');
                       },
                     ),

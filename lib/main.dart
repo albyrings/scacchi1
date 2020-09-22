@@ -9,28 +9,8 @@ import 'articoli.dart';
 import 'MyNews.dart';
 import 'settingScreen.dart';
 import 'package:gradient_text/gradient_text.dart';
-//import 'package:scacchiapp1/articoli.dart';
-//prova questo con un emulatore(ovviamente attivalo anche sotto)
-//import 'package:gradient_text/gradient_text.dart';
 
 void main() => runApp(MyApp());
-
-/*const color1 = Color(0xffb8150c);
-const color2 = Color(0xff7f0d36);
-const top1 = Image(
-  image: NetworkImage(
-      'https://liceoscacchibari.edu.it/wp-content/uploads/2014/03/logonull.png'),
-);
-List<String> titoli = [
-  'Avviso per gli iscritti alle classi prime 2020-21',
-  'Olimpiadi di Robotica 2020: 1° premio allo Scacchi per la categoria Terra',
-  'DATE DI PUBBLICAZIONE DEGLI ESITI FINALI DEGLI ESAMI DI STATO',
-  'Pubblicazione dei calendari dei colloqui delle Commissioni di Esame di Stato',
-  'Didattica ai tempi del coronavirus – Storia e letteratura inglese',
-  'Cerimonia di consegna dei fondi #ScacchiBatteCovid'
-];*/
-
-//metti le routes queando fai le altre schermate
 
 class MyApp extends StatelessWidget {
   @override
@@ -83,32 +63,21 @@ class _MyHomePageState extends State<MyHomePage> {
       Navigator.pushNamed(context, '/welcome');
     }
     if (index == 2) {
-      Navigator.pushNamed(context, '/welcome');
+      Navigator.pushNamed(context, '/setting');
     }
   }
 
   @override
   Widget build(BuildContext context) {
+    const colorsLinearGradient = [
+      Colors.grey,
+      Colors.deepOrange,
+      Colors.yellowAccent,
+      color1,
+      color2
+    ];
     return Scaffold(
       backgroundColor: color2,
-      /* appBar: AppBar(backgroundColor: color1,
-           title: NetworkImage('https://liceoscacchibari.edu.it/wp-content/uploads/2014/03/logonull.png'),
-            /*color: color2,
-            onPressed: () {
-              print('Icon pressed');
-              //metti la routes della homepage
-            },
-          ),*/
-          actions: <Widget>[
-            IconButton(
-              icon: Icon(Icons.add),
-              onPressed: () {
-                print('Icon pressed');
-                //metti la routes della homepage
-              },
-            ),
-          ]),*/
-
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
@@ -117,13 +86,7 @@ class _MyHomePageState extends State<MyHomePage> {
             padding: EdgeInsets.only(left: 35.0, top: 16.0),
             height: 150.0,
             child: GradientText('Bentornato $nome_utente!',
-                gradient: LinearGradient(colors: [
-                  Colors.grey,
-                  Colors.deepOrange,
-                  Colors.yellowAccent,
-                  color1,
-                  color2
-                ]),
+                gradient: LinearGradient(colors: colorsLinearGradient),
                 style: TextStyle(
                   fontWeight: FontWeight.bold,
                   fontSize: 50,
@@ -145,34 +108,12 @@ class _MyHomePageState extends State<MyHomePage> {
                 itemBuilder: (context, index) {
                   return MyNews(
                     title: titoli[index],
+                    indexliste: index,
                   );
                 },
               ),
             ),
           ),
-
-          /*MyNews(
-              title: 'Avviso per gli iscritti alle classi prime 2020-21',
-            ),
-            MyNews(
-              title:
-                  'Olimpiadi di Robotica 2020: 1° premio allo Scacchi per la categoria Terra',
-            ),
-            MyNews(
-              title:
-                  'DATE DI PUBBLICAZIONE DEGLI ESITI FINALI DEGLI ESAMI DI STATO',
-            ),
-            MyNews(
-              title:
-                  'Pubblicazione dei calendari dei colloqui delle Commissioni di Esame di Stato',
-            ),
-            MyNews(
-              title:
-                  'Didattica ai tempi del coronavirus – Storia e letteratura inglese',
-            ),
-            MyNews(
-              title: 'Cerimonia di consegna dei fondi #ScacchiBatteCovid',
-            )*/
         ],
       ),
       bottomNavigationBar: BottomNavigationBar(

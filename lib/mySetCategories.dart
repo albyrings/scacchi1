@@ -1,20 +1,19 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/cupertino.dart';
 import 'costanti.dart';
 
-class MySetCategory extends StatelessWidget {
-  MySetCategory({
-    @required this.category,
-    @required this.indexliste,
-    //@required this.content
-  });
-
-  // Fields in a Widget subclass are always marked "final".
+class MySetcategory extends StatefulWidget {
+  MySetcategory({Key key, this.category, @required this.indexliste})
+      : super(key: key);
 
   final String category;
   final int indexliste;
 
-  //final String content;
+  @override
+  _MySetcategoryState createState() => _MySetcategoryState();
+}
 
+class _MySetcategoryState extends State<MySetcategory> {
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -25,48 +24,42 @@ class MySetCategory extends StatelessWidget {
           color: Colors.grey[400], borderRadius: BorderRadius.circular(20.0)),
       // Row is a horizontal, linear layout.
       child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        mainAxisSize: MainAxisSize.min,
-        // <Widget> is the type of items in the list.
-        children: <Widget>[
-          Flexible(
-            flex: 1,
-            child: Text(
-              '$title',
-              style: TextStyle(
-                fontWeight: FontWeight.bold,
-                fontSize: 20,
-                fontStyle: FontStyle.italic,
+          mainAxisAlignment: MainAxisAlignment.center,
+          mainAxisSize: MainAxisSize.min,
+          // <Widget> is the type of items in the list.
+          children: <Widget>[
+            /*Flexible(
+              flex: 2,
+              child: Text(
+                '${categorie[0]}',
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 20,
+                  fontStyle: FontStyle.italic,
+                ),
               ),
-            ),
-          ),
-          Flexible(
-            flex: 9,
-            child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Flexible(
-                    flex: 5,
-                    child: Text(
-                      'leggi di più',
-                      style: TextStyle(fontStyle: FontStyle.italic),
-                    ),
-                  ),
-                  Flexible(
-                    flex: 1,
-                    child: IconButton(
-                      icon: Icon(Icons.arrow_forward_ios),
-                      tooltip: 'Leggi',
-                      onPressed: () {
-                        indexliste_1 = indexliste;
-                        Navigator.pushNamed(context, '/articoli');
+            ),*/
+            Flexible(
+                flex: 1,
+                child: MergeSemantics(
+                  child: ListTile(
+                    title: Text('${categorie[0]}'),
+                    trailing: CupertinoSwitch(
+                      value: categorieval[0],
+                      onChanged: (bool value) {
+                        setState(() {
+                          categorieval[0] = value;
+                        });
                       },
                     ),
+                    onTap: () {
+                      setState(() {
+                        categorieval[0] = !categorieval[0];
+                      });
+                    },
                   ),
-                ]),
-          ),
-        ],
-      ),
+                )),
+          ]),
     );
   }
 }
