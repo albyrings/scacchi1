@@ -12,10 +12,9 @@ class SettingScreen extends StatefulWidget {
 class _SettingScreenState extends State<SettingScreen> {
   int _selectedIndex = 2;
 
-  void _incrementCounter() {
-    setState(() {
-      ;
-    });
+  @override
+  void initState() {
+    super.initState();
   }
 
   void _onItemTapped(int index) {
@@ -138,6 +137,7 @@ class _SettingScreenState extends State<SettingScreen> {
                                         setState(() {
                                           categorieval[1] = value;
                                         });
+                                        print(categorieval);
                                       },
                                     ),
                                     onTap: () {
@@ -253,8 +253,8 @@ class _SettingScreenState extends State<SettingScreen> {
             title: Text('Business'),
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.school),
-            title: Text('School'),
+            icon: Icon(Icons.settings),
+            title: Text('Categorie'),
           ),
         ],
         //selectedItemColor: Colors.amber[800],

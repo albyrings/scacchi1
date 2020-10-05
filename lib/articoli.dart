@@ -75,8 +75,8 @@ class _ArticoliState extends State<Articoli> {
             title: Text('Business'),
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.school),
-            title: Text('School'),
+            icon: Icon(Icons.settings),
+            title: Text('Categorie'),
           ),
         ],
         currentIndex: _selectedIndex,

@@ -129,8 +129,8 @@ class _MyHomePageState extends State<MyHomePage> {
             title: Text('Business'),
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.school),
-            title: Text('School'),
+            icon: Icon(Icons.settings),
+            title: Text('Categorie'),
           ),
         ],
         //selectedItemColor: Colors.amber[800],
