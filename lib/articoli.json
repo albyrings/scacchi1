@@ -1,4 +1,4 @@
-{"articoli":{
+{"articoli":[{
     "id":1,
    "title":"testo",
    "testo":"contenuto"
@@ -7,4 +7,5 @@
     "id":2,
    "title":"testo2",
    "testo":"contenuto2"
-}}
+}]
+}

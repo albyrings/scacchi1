@@ -1,49 +1,17 @@
-// Copyright (c) 2019, the Dart project authors.  Please see the AUTHORS file
-// for details. All rights reserved. Use of this source code is governed by a
-// BSD-style license that can be found in the LICENSE file.
-
 import 'package:flutter/material.dart';
-import 'package:scacchi1/prodottoscreen.dart';
-import 'welcome.dart';
 import 'costanti.dart';
-import 'articoli.dart';
-import 'MyNews.dart';
-import 'settingScreen.dart';
-import 'package:gradient_text/gradient_text.dart';
+import 'MyProdotto.dart';
 
-void main() => runApp(MyApp());
-
-class MyApp extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'LICEO SCACCHI BARI',
-      theme: ThemeData(
-        primarySwatch: Colors.red,
-      ),
-      routes: {
-        // When navigating to the "/" route, build the FirstScreen widget.
-        '/': (context) => MyHomePage(),
-        // When navigating to the "/second" route, build the SecondScreen widget.
-        '/articoli': (context) => Articoli(),
-        '/welcome': (context) => WelcomeScreen(),
-        '/setting': (context) => SettingScreen(),
-        '/prodotti': (context) => ProdottoScreen(),
-      },
-    );
-  }
-}
-
-class MyHomePage extends StatefulWidget {
-  MyHomePage({Key key, this.title}) : super(key: key);
+class ProdottoScreen extends StatefulWidget {
+  ProdottoScreen({Key key, this.title}) : super(key: key);
 
   final String title;
 
   @override
-  _MyHomePageState createState() => _MyHomePageState();
+  _ProdottoScreenState createState() => _ProdottoScreenState();
 }
 
-class _MyHomePageState extends State<MyHomePage> {
+class _ProdottoScreenState extends State<ProdottoScreen> {
   int _counter = 0;
   int _selectedIndex = 0;
 
@@ -64,7 +32,7 @@ class _MyHomePageState extends State<MyHomePage> {
       Navigator.pushNamed(context, '/welcome');
     }
     if (index == 2) {
-      Navigator.pushNamed(context, '/prodotti');
+      Navigator.pushNamed(context, '/setting');
     }
   }
 
@@ -86,8 +54,7 @@ class _MyHomePageState extends State<MyHomePage> {
           Container(
             padding: EdgeInsets.only(left: 35.0, top: 16.0),
             height: 150.0,
-            child: GradientText('Bentornato $nome_utente!',
-                gradient: LinearGradient(colors: colorsLinearGradient),
+            child: Text('Scopri i nostri prodotti!',
                 style: TextStyle(
                   fontWeight: FontWeight.bold,
                   fontSize: 50,
@@ -105,11 +72,12 @@ class _MyHomePageState extends State<MyHomePage> {
                 ),
               ),
               child: ListView.builder(
-                itemCount: titoli.length,
+                itemCount: prodotti.length,
                 itemBuilder: (context, index) {
-                  return MyNews(
-                    title: titoli[index],
+                  return MyProdotto(
+                    title: prodotti[index],
                     indexliste: index,
+                    image: index,
                   );
                 },
               ),

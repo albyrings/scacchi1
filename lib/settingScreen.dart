@@ -1,20 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'costanti.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class SettingScreen extends StatefulWidget {
   SettingScreen({Key key}) : super(key: key);
 
   @override
-  _SettingScreenState createState() => _SettingScreenState();
+  SettingScreenState createState() => SettingScreenState();
 }
 
-class _SettingScreenState extends State<SettingScreen> {
+class SettingScreenState extends State<SettingScreen> {
   int _selectedIndex = 2;
 
   @override
   void initState() {
     super.initState();
+    //_getAllPref();
   }
 
   void _onItemTapped(int index) {
@@ -31,6 +33,38 @@ class _SettingScreenState extends State<SettingScreen> {
       Navigator.pushNamed(context, '/setting');
     }
   }
+
+  /*Future<List> _getAllPref() async {
+    final prefs = await SharedPreferences.getInstance();
+    for (var i = 0; i < categorieval.length; i++) {
+      final startupNumber = prefs.getBool('startupNumber');
+      if (startupNumber == null) {
+        categorieval[i] = true;
+      } else {
+        categorieval[i] = startupNumber;
+      }
+      return categorieval;
+    }
+
+    /*Future<bool> _getPref(indexs) async {
+      final prefs = await SharedPreferences.getInstance();
+      final startupNumber = prefs.getBool('startupNumber');
+      if (startupNumber == null) {
+        categorieval[indexs] = true;
+      }
+      categorieval[indexs] = startupNumber;
+      return categorieval[indexs];
+    }*/
+
+    Future<void> _changepref(indexs) async {
+      final prefs = await SharedPreferences.getInstance();
+
+      bool lastStartupNumber = await _getPref(indexs);
+      bool currentBool = lastStartupNumber == true ? false : true;
+
+      await prefs.setBool('startupNumber', currentBool);
+      return currentBool;
+    }*/
 
   @override
   Widget build(BuildContext context) {
@@ -99,6 +133,7 @@ class _SettingScreenState extends State<SettingScreen> {
                                     onTap: () {
                                       setState(() {
                                         categorieval[0] = !categorieval[0];
+                                        //_changepref(0);
                                       });
                                     },
                                   ),
@@ -137,12 +172,14 @@ class _SettingScreenState extends State<SettingScreen> {
                                         setState(() {
                                           categorieval[1] = value;
                                         });
+
                                         print(categorieval);
                                       },
                                     ),
                                     onTap: () {
                                       setState(() {
                                         categorieval[1] = !categorieval[1];
+                                        // _changepref(1);
                                       });
                                     },
                                   ),
@@ -186,6 +223,7 @@ class _SettingScreenState extends State<SettingScreen> {
                                     onTap: () {
                                       setState(() {
                                         categorieval[2] = !categorieval[2];
+                                        // _changepref(2);
                                       });
                                     },
                                   ),
@@ -229,6 +267,7 @@ class _SettingScreenState extends State<SettingScreen> {
                                     onTap: () {
                                       setState(() {
                                         categorieval[3] = !categorieval[3];
+                                        // _changepref(3);
                                       });
                                     },
                                   ),
