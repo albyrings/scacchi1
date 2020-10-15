@@ -31,18 +31,31 @@ class MyProdotto extends StatelessWidget {
         mainAxisSize: MainAxisSize.min,
         // <Widget> is the type of items in the list.
         children: <Widget>[
-          Flexible(
-            flex: 1,
-            child: Image.asset('images/logo_scacchi.png'),
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Flexible(
+              flex: 1,
+              child: Card(
+                shape: BeveledRectangleBorder(
+                  borderRadius: BorderRadius.circular(60.0),
+                ),
+                //shadowColor: Colors.grey[850],
+                //elevation: 2000.0,
+                child: Image.asset('images/logo_scacchi.png'),
+              ),
+            ),
           ),
-          Flexible(
-            flex: 1,
-            child: Text(
-              '$title',
-              style: TextStyle(
-                fontWeight: FontWeight.bold,
-                fontSize: 20,
-                fontStyle: FontStyle.italic,
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Flexible(
+              flex: 1,
+              child: Text(
+                '$title',
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 30,
+                  fontStyle: FontStyle.italic,
+                ),
               ),
             ),
           ),
