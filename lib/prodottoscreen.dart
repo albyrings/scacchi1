@@ -52,8 +52,8 @@ class _ProdottoScreenState extends State<ProdottoScreen> {
         children: <Widget>[
           top1,
           Container(
-            padding: EdgeInsets.only(left: 35.0, top: 10.0, bottom: 5.0),
-            height: 130.0,
+            padding: EdgeInsets.only(left: 35.0, top: 10.0, bottom: 10.0),
+            //height: 130.0,
             child: Text('Scopri i nostri prodotti!',
                 style: TextStyle(
                   fontWeight: FontWeight.bold,
