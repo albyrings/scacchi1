@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'costanti.dart';
 import 'MyArticle.dart';
+import 'dart:async';
+import 'package:url_launcher/url_launcher.dart';
 
 class Articoli extends StatefulWidget {
   Articoli({
@@ -25,12 +27,29 @@ class _ArticoliState extends State<Articoli> {
       Navigator.pushNamed(context, '/');
     }
     if (index == 1) {
-      Navigator.pushNamed(context, '/welcome');
+      Navigator.pushNamed(context, '/prodotti');
     }
     if (index == 2) {
       Navigator.pushNamed(context, '/setting');
     }
   }
+
+  /*Future<void> _launched;
+
+  Future<void> _launchURL() async {
+    const url = 'https://liceoscacchibari.edu.it/';
+    if (await canLaunch(url)) {
+      await launch(url);
+    } else {
+      throw 'Could not launch $url';
+    }
+    Widget _launchStatus(BuildContext context, AsyncSnapshot<void> snapshot) {
+      if (snapshot.hasError) {
+        return Text('Error: ${snapshot.error}');
+      } else {
+        return const Text('');
+      }
+    }*/
 
   @override
   Widget build(BuildContext context) {
@@ -41,6 +60,7 @@ class _ArticoliState extends State<Articoli> {
           padding: EdgeInsets.only(top: 5.0),
           children: <Widget>[
             top1,
+            //FutureBuilder<void>(future: _launched, builder: _launchStatus),
             IconButton(
               alignment: Alignment.topLeft,
               icon: Icon(Icons.arrow_back_ios),
@@ -58,7 +78,19 @@ class _ArticoliState extends State<Articoli> {
               onPressed: () {
                 Navigator.pop(context);
               },
-            )
+            ),
+            /*IconButton(
+                icon: Icon(Icons.arrow_forward_ios),
+                alignment: Alignment.bottomCenter,
+                tooltip: 'Vai sul sito',
+                onPressed: () {
+                  
+                  //setState(() {
+                   // _launched = _launchURL();
+                  //}
+                  );
+                },
+              ),*/
           ],
         ),
       ),
@@ -71,8 +103,8 @@ class _ArticoliState extends State<Articoli> {
             title: Text('Home'),
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.business),
-            title: Text('Business'),
+            icon: Icon(Icons.people_alt),
+            title: Text('Vestiario'),
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.settings),
@@ -85,5 +117,6 @@ class _ArticoliState extends State<Articoli> {
       ),
     );
     return scaffold;
+    throw UnimplementedError();
   }
 }

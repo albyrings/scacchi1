@@ -63,7 +63,7 @@ class _WelcomeScreenState extends State<WelcomeScreen>
             children: <Widget>[
               top1,
               SizedBox(
-                height: 140.0,
+                height: 90.00,
               ),
               Row(
                 children: <Widget>[

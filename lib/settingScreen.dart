@@ -27,7 +27,7 @@ class SettingScreenState extends State<SettingScreen> {
       Navigator.pushNamed(context, '/');
     }
     if (index == 1) {
-      Navigator.pushNamed(context, '/welcome');
+      Navigator.pushNamed(context, '/prodotti');
     }
     if (index == 2) {
       Navigator.pushNamed(context, '/setting');
@@ -288,8 +288,8 @@ class SettingScreenState extends State<SettingScreen> {
             title: Text('Home'),
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.business),
-            title: Text('Business'),
+            icon: Icon(Icons.people_alt),
+            title: Text('Vestiario'),
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.settings),

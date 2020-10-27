@@ -1,19 +1,20 @@
 import 'package:flutter/material.dart';
 import 'costanti.dart';
-import 'MyProdotto.dart';
+import 'MyNews.dart';
+import 'package:gradient_text/gradient_text.dart';
 
-class ProdottoScreen extends StatefulWidget {
-  ProdottoScreen({Key key, this.title}) : super(key: key);
+class MyHomePage extends StatefulWidget {
+  MyHomePage({Key key, this.title}) : super(key: key);
 
   final String title;
 
   @override
-  _ProdottoScreenState createState() => _ProdottoScreenState();
+  _MyHomePageState createState() => _MyHomePageState();
 }
 
-class _ProdottoScreenState extends State<ProdottoScreen> {
+class _MyHomePageState extends State<MyHomePage> {
   int _counter = 0;
-  int _selectedIndex = 1;
+  int _selectedIndex = 0;
 
   void _incrementCounter() {
     setState(() {
@@ -52,9 +53,10 @@ class _ProdottoScreenState extends State<ProdottoScreen> {
         children: <Widget>[
           top1,
           Container(
-            padding: EdgeInsets.only(left: 35.0, top: 10.0, bottom: 5.0),
-            height: 130.0,
-            child: Text('Scopri i nostri prodotti!',
+            padding: EdgeInsets.only(left: 35.0, top: 16.0),
+            height: 150.0,
+            child: GradientText('Bentornato $nome_utente!',
+                gradient: LinearGradient(colors: colorsLinearGradient),
                 style: TextStyle(
                   fontWeight: FontWeight.bold,
                   fontSize: 50,
@@ -66,19 +68,17 @@ class _ProdottoScreenState extends State<ProdottoScreen> {
             child: Container(
               padding: EdgeInsets.only(left: 16.0),
               decoration: BoxDecoration(
-                shape: BoxShape.circle,
-                /* borderRadius: BorderRadius.only(
+                borderRadius: BorderRadius.only(
                   topLeft: Radius.circular(20.0),
                   topRight: Radius.circular(20.0),
-                  ),*/
+                ),
               ),
               child: ListView.builder(
-                itemCount: prodotti.length,
+                itemCount: titoli.length,
                 itemBuilder: (context, index) {
-                  return MyProdotto(
-                    title: prodotti[index],
+                  return MyNews(
+                    title: titoli[index],
                     indexliste: index,
-                    image: index,
                   );
                 },
               ),

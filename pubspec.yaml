@@ -1,5 +1,5 @@
-name: scacchi1
-description: The best app.
+name: A.Scacchi
+description: Made by Alberto Anelli
 
 # The following line prevents the package from being accidentally published to
 # pub.dev using `pub publish`. This is preferred for private packages.
@@ -29,6 +29,7 @@ dependencies:
   gradient_text: ^1.0.2
   animated_text_kit: ^2.2.0
   shared_preferences: ^0.5.2
+  url_launcher: ^5.7.8
 
 
 dev_dependencies:
@@ -49,7 +50,8 @@ flutter:
   # To add assets to your application, add an assets section, like this:
   assets:
     - images/logo_scacchi.png
-    - lib/prodotti/0.png
+    - images/0.png
+    - images/1.png
     
 
 

@@ -41,7 +41,7 @@ class MyProdotto extends StatelessWidget {
                 ),
                 //shadowColor: Colors.grey[850],
                 //elevation: 2000.0,
-                child: Image.asset('images/logo_scacchi.png'),
+                child: Image.asset('images/$indexliste.png'),
               ),
             ),
           ),
