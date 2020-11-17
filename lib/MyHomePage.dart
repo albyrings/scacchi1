@@ -39,7 +39,7 @@ class _MyHomePageState extends State<MyHomePage> {
       Navigator.pushNamed(context, '/');
     }
     if (index == 1) {
-      Navigator.pushNamed(context, '/welcome');
+      Navigator.pushNamed(context, '/prodotti');
     }
     if (index == 2) {
       Navigator.pushNamed(context, '/setting');
