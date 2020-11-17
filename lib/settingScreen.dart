@@ -16,7 +16,7 @@ class SettingScreenState extends State<SettingScreen> {
   @override
   void initState() {
     super.initState();
-    //_getAllPref();
+    _getAllPref();
   }
 
   void _onItemTapped(int index) {
@@ -34,37 +34,58 @@ class SettingScreenState extends State<SettingScreen> {
     }
   }
 
-  /*Future<List> _getAllPref() async {
-    final prefs = await SharedPreferences.getInstance();
+  Future<List> _getAllPref() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
     for (var i = 0; i < categorieval.length; i++) {
-      final startupNumber = prefs.getBool('startupNumber');
+      bool startupNumber = prefs.getBool('startupNumber$i');
       if (startupNumber == null) {
-        categorieval[i] = true;
+        categorieval1[i] = true;
       } else {
-        categorieval[i] = startupNumber;
+        categorieval1[i] = startupNumber;
       }
-      return categorieval;
+
+      print("categorieval11:$categorieval1");
+    }
+    /*setState(() {
+      categorieval = categorieval1;
+    });*/
+    categorieval = categorieval1;
+
+    print('getAllPref()');
+    print("categorieval:$categorieval");
+    print("categorieval12$categorieval1");
+  }
+
+  Future<bool> _getPref(indexs) async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    bool startupNumber = prefs.getBool('startupNumber$indexs');
+    if (startupNumber == null) {
+      categorieval[indexs] = true;
+    } else {
+      categorieval[indexs] = startupNumber;
     }
 
-    /*Future<bool> _getPref(indexs) async {
-      final prefs = await SharedPreferences.getInstance();
-      final startupNumber = prefs.getBool('startupNumber');
-      if (startupNumber == null) {
-        categorieval[indexs] = true;
-      }
-      categorieval[indexs] = startupNumber;
-      return categorieval[indexs];
-    }*/
+    //categorieval[indexs] = startupNumber ?? true;
+    setState(() {
+      categorieval[indexs] = categorieval[indexs];
+    });
+    print('getPref()');
+  }
 
-    Future<void> _changepref(indexs) async {
-      final prefs = await SharedPreferences.getInstance();
-
-      bool lastStartupNumber = await _getPref(indexs);
-      bool currentBool = lastStartupNumber == true ? false : true;
-
-      await prefs.setBool('startupNumber', currentBool);
-      return currentBool;
-    }*/
+  Future<void> _changepref(indexs) async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    bool lastStartupNumber = await _getPref(indexs);
+    //lastStartupNumber = lastStartupNumber ?? true;
+    bool currentBool = lastStartupNumber == true ? false : true;
+    /*setState(() {
+      prefs.setBool('startupNumber', currentBool);
+    });*/
+    prefs.setBool('startupNumber$indexs', currentBool);
+    categorieval[indexs] = currentBool;
+    //return categorieval[indexs];
+    print('changepref');
+    print(categorieval);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -133,7 +154,7 @@ class SettingScreenState extends State<SettingScreen> {
                                     onTap: () {
                                       setState(() {
                                         categorieval[0] = !categorieval[0];
-                                        //_changepref(0);
+                                        _changepref(0);
                                       });
                                     },
                                   ),
@@ -179,7 +200,7 @@ class SettingScreenState extends State<SettingScreen> {
                                     onTap: () {
                                       setState(() {
                                         categorieval[1] = !categorieval[1];
-                                        // _changepref(1);
+                                        _changepref(1);
                                       });
                                     },
                                   ),
@@ -223,7 +244,7 @@ class SettingScreenState extends State<SettingScreen> {
                                     onTap: () {
                                       setState(() {
                                         categorieval[2] = !categorieval[2];
-                                        // _changepref(2);
+                                        _changepref(2);
                                       });
                                     },
                                   ),
@@ -267,7 +288,7 @@ class SettingScreenState extends State<SettingScreen> {
                                     onTap: () {
                                       setState(() {
                                         categorieval[3] = !categorieval[3];
-                                        // _changepref(3);
+                                        _changepref(3);
                                       });
                                     },
                                   ),

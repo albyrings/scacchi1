@@ -2,11 +2,14 @@
 
 import 'package:flutter/material.dart';
 import 'prodottoscreen.dart';
+import 'testSharedPreferences.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'welcome.dart';
 import 'costanti.dart';
 import 'articoli.dart';
 import 'settingScreen.dart';
 import 'MyHomePage.dart';
+import 'loadingScreen.dart';
 
 void main() => runApp(MyApp());
 
@@ -18,13 +21,12 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.red,
       ),
-      initialRoute: nome_utente == '' ? '/welcome' : '/',
+      initialRoute: '/',
       routes: {
-        // When navigating to the "/" route, build the FirstScreen widget.
         '/': (context) => MyHomePage(),
-        // When navigating to the "/second" route, build the SecondScreen widget.
         '/articoli': (context) => Articoli(),
         '/welcome': (context) => WelcomeScreen(),
+        //'/loading': (context) => LoadingScreen(),
         '/setting': (context) => SettingScreen(),
         '/prodotti': (context) => ProdottoScreen(),
       },

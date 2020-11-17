@@ -4,8 +4,14 @@ import 'rounded_button.dart';
 import 'costanti.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+//SCRIVI SHAREDPREFERANCE
+SharedPreferences localStorage;
+
 class WelcomeScreen extends StatefulWidget {
   static const String id = 'welcome_screen';
+  static Future init() async {
+    localStorage = await SharedPreferences.getInstance();
+  }
 
   @override
   _WelcomeScreenState createState() => _WelcomeScreenState();
@@ -16,20 +22,26 @@ class _WelcomeScreenState extends State<WelcomeScreen>
   AnimationController controller;
   Animation animation;
 
-  addStringToSF() async {
+  /*void addStringToSF() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
-    prefs.setString('nome_utente', myController.text);
-  }
+    setState(() {
+      prefs.setString('nome_utente', myController.text);
+    });
+    print('Aggiunto $nome_utente');
+  }*/
 
   getStringValuesSF() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     //Return String
-    String nome_utente = prefs.getString('nome_utente');
+    setState(() {
+      String nome_utente = prefs.getString('nome_utente');
+    });
   }
 
   @override
   void initState() {
     super.initState();
+    //getStringValuesSF();
 
     controller =
         AnimationController(duration: Duration(seconds: 1), vsync: this);
@@ -67,13 +79,6 @@ class _WelcomeScreenState extends State<WelcomeScreen>
               ),
               Row(
                 children: <Widget>[
-                  /*Hero(
-                  tag: 'logo',
-                  child: Container(
-                    child: Text('Liceo A. Scacchi'),
-                    height: 60.0,
-                  ),
-                ),*/
                   TypewriterAnimatedTextKit(
                     text: ['Liceo A.Scacchi'],
                     textStyle: TextStyle(
@@ -98,9 +103,15 @@ class _WelcomeScreenState extends State<WelcomeScreen>
                 title: 'Vai!',
                 colour: Colors.grey[800],
                 onPressed: () {
-                  nome_utente = myController.text;
-                  addStringToSF();
-                  getStringValuesSF();
+                  String nome_utente = myController.text;
+                  //addStringToSF();
+                  save() async {
+                    await WelcomeScreen.init();
+                    localStorage.setString(
+                        'nome_utente', nome_utente.toString());
+                  }
+
+                  save();
                   Navigator.pushNamed(context, '/');
                 },
               ),

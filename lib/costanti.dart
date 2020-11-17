@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'dart:async';
+import 'welcome.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'user.dart';
 
 const color1 = Color(0xffb8150c);
 const color2 = Color(0xff7f0d36);
@@ -32,6 +33,7 @@ List<String> contenuti = [
 ];
 
 List<bool> categorieval = [true, true, true, true];
+List<bool> categorieval1 = [true, true, true, true];
 //categorieval =preferenze.json[categoriejson];
 List<String> categorie = [
   'BORSE DI STUDIO,CONCORSI E GARE',
@@ -46,15 +48,15 @@ List<String> prodotti = [
 ];
 
 int indexliste_1;
-
+//Future<String> nome_utente1 = getStringValuesSF();
 //TODO: CREA UN METODO CHE CREA LA LISTA DA VISUALIZZARE NELLA HOME TENEDO CONTO DELLE PREFERENZE ESPRESSE
 //TODO: CAMBIA ICONE (VEDI IN DOWNLOAD)
 
 //stai attento in quale setstate metti _change()
 
-Future<void> _resetCounter() async {
-  final prefs = await SharedPreferences.getInstance();
-  await prefs.setBool('startupNumber', true);
-}
-
-String nome_utente = '';
+/*Future<String> getStringValuesSF() async {
+  SharedPreferences prefs = await SharedPreferences.getInstance();
+  String nome_utente = prefs.getString('nome_utente');
+  print(nome_utente);
+  return nome_utente;
+}*/

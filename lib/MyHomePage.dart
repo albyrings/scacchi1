@@ -2,6 +2,21 @@ import 'package:flutter/material.dart';
 import 'costanti.dart';
 import 'MyNews.dart';
 import 'package:gradient_text/gradient_text.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'dart:async';
+
+String nomeUtente;
+Future<String> getStringValuesSF() async {
+  SharedPreferences prefs = await SharedPreferences.getInstance();
+  //Return String
+  /*setState(() {
+      String nome_utente = prefs.getString('nome_utente');
+    });*/
+  String nome_utente = prefs.getString('nome_utente');
+  print(nome_utente);
+  nomeUtente = nome_utente;
+  //return nome_utente;
+}
 
 class MyHomePage extends StatefulWidget {
   MyHomePage({Key key, this.title}) : super(key: key);
@@ -16,12 +31,6 @@ class _MyHomePageState extends State<MyHomePage> {
   int _counter = 0;
   int _selectedIndex = 0;
 
-  void _incrementCounter() {
-    setState(() {
-      _counter++;
-    });
-  }
-
   void _onItemTapped(int index) {
     setState(() {
       _selectedIndex = index;
@@ -30,12 +39,20 @@ class _MyHomePageState extends State<MyHomePage> {
       Navigator.pushNamed(context, '/');
     }
     if (index == 1) {
-      Navigator.pushNamed(context, '/prodotti');
+      Navigator.pushNamed(context, '/welcome');
     }
     if (index == 2) {
       Navigator.pushNamed(context, '/setting');
     }
   }
+
+  @override
+  void initState() {
+    getStringValuesSF();
+    super.initState();
+  }
+
+  //TODO: ICONE IOS
 
   @override
   Widget build(BuildContext context) {
@@ -46,6 +63,8 @@ class _MyHomePageState extends State<MyHomePage> {
       color1,
       color2
     ];
+
+    print(nomeUtente);
     return Scaffold(
       backgroundColor: color2,
       body: Column(
@@ -55,7 +74,7 @@ class _MyHomePageState extends State<MyHomePage> {
           Container(
             padding: EdgeInsets.only(left: 35.0, top: 16.0),
             height: 150.0,
-            child: GradientText('Bentornato $nome_utente!',
+            child: GradientText('Buongiorno $nomeUtente!',
                 gradient: LinearGradient(colors: colorsLinearGradient),
                 style: TextStyle(
                   fontWeight: FontWeight.bold,
