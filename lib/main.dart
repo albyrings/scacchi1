@@ -21,12 +21,12 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.red,
       ),
-      initialRoute: '/',
+      initialRoute: '/loading',
       routes: {
         '/': (context) => MyHomePage(),
         '/articoli': (context) => Articoli(),
         '/welcome': (context) => WelcomeScreen(),
-        //'/loading': (context) => LoadingScreen(),
+        '/loading': (context) => LoadingScreen(),
         '/setting': (context) => SettingScreen(),
         '/prodotti': (context) => ProdottoScreen(),
       },

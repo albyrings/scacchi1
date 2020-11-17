@@ -60,3 +60,16 @@ int indexliste_1;
   print(nome_utente);
   return nome_utente;
 }*/
+
+String nomeUtente;
+Future<String> getStringValuesSF() async {
+  SharedPreferences prefs = await SharedPreferences.getInstance();
+  //Return String
+  /*setState(() {
+      String nome_utente = prefs.getString('nome_utente');
+    });*/
+  String nome_utente = prefs.getString('nome_utente');
+  print(nome_utente);
+  nomeUtente = nome_utente;
+  //return nome_utente;
+}

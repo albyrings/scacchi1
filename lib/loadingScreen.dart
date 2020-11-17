@@ -1,8 +1,10 @@
-/*import 'package:A.Scacchi/MyHomePage.dart';
+import 'dart:ui';
+//import 'package:js';
 import 'package:flutter/material.dart';
 import 'costanti.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
-class MessageState<T extends StatefulWidget> extends State<T> {
+/*class MessageState<T extends StatefulWidget> extends State<T> {
   String _message;
 
   /// Setter for the message variable
@@ -12,6 +14,19 @@ class MessageState<T extends StatefulWidget> extends State<T> {
 
   /// Getter for the message variable
   String get getMessage => _message;
+}*/
+
+String nomeUtente;
+Future<String> getStringValuesSF() async {
+  SharedPreferences prefs = await SharedPreferences.getInstance();
+  //Return String
+  /*setState(() {
+      String nome_utente = prefs.getString('nome_utente');
+    });*/
+  String nome_utente = prefs.getString('nome_utente');
+  print(nome_utente);
+  nomeUtente = nome_utente;
+  //return nome_utente;
 }
 
 class LoadingScreen extends StatefulWidget {
@@ -22,30 +37,11 @@ class LoadingScreen extends StatefulWidget {
 /// Initialise the state
 @override
 void initState() {
-  super.initState();
-
-  /// If the LoadingScreen widget has an initial message set, then the default
-  /// message in the MessageState class needs to be updated
-  if (widget.initialMessage != null) {
-    initialMessage = widget.initialMessage;
-  }
-
-  /// We require the initializers to run after the loading screen is rendered
-  SchedulerBinding.instance.addPostFrameCallback((_) {
-    runInitTasks();
-  });
+  getStringValuesSF();
 }
 
 /// This method calls the initializers and once they complete redirects to
 /// the widget provided in navigateAfterInit
-@protected
-Future runInitTasks() async {
-  /// Run each initializer method sequentially
-  Future.forEach(widget.initializers, (init) => init(this)).whenComplete(() {
-    Navigator.of(context).pushReplacement(
-        new MaterialPageRoute(builder: (BuildContext context) => MyHomePage()));
-  });
-}
 
 class LoadingScreenState extends State<LoadingScreen> {
   @override
@@ -96,6 +92,11 @@ class LoadingScreenState extends State<LoadingScreen> {
                       Padding(
                         padding: const EdgeInsets.only(top: 20.0),
                       ),
+                      IconButton(
+                          icon: Icon(Icons.arrow_back),
+                          onPressed: () {
+                            Navigator.pushNamed(context, '/');
+                          })
                     ],
                   ),
                 ),
@@ -107,4 +108,3 @@ class LoadingScreenState extends State<LoadingScreen> {
     );
   }
 }
-*/
