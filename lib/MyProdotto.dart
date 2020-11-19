@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'costanti.dart';
 
 class MyProdotto extends StatelessWidget {
   MyProdotto({

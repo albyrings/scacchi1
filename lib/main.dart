@@ -3,7 +3,6 @@
 import 'package:flutter/material.dart';
 import 'prodottoscreen.dart';
 import 'welcome.dart';
-import 'costanti.dart';
 import 'articoli.dart';
 import 'settingScreen1.dart';
 import 'MyHomePage.dart';
