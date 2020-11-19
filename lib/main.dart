@@ -2,12 +2,10 @@
 
 import 'package:flutter/material.dart';
 import 'prodottoscreen.dart';
-import 'testSharedPreferences.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 import 'welcome.dart';
 import 'costanti.dart';
 import 'articoli.dart';
-import 'settingScreen.dart';
+import 'settingScreen1.dart';
 import 'MyHomePage.dart';
 import 'loadingScreen.dart';
 

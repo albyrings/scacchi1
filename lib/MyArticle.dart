@@ -6,24 +6,17 @@ class MyArticle extends StatelessWidget {
     @required this.content,
   });
 
-  // Fields in a Widget subclass are always marked "final".
-
   final String title;
   final String content;
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      //height: 56.0, // in logical pixels
       margin: EdgeInsets.symmetric(horizontal: 16.0, vertical: 1.0),
       padding: const EdgeInsets.symmetric(horizontal: 8.0),
-      //decoration: BoxDecoration(
-      // color: Colors.grey[400], borderRadius: BorderRadius.circular(20.0)),
-      // Row is a horizontal, linear layout.
       child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           mainAxisSize: MainAxisSize.min,
-          // <Widget> is the type of items in the list.
           children: <Widget>[
             SizedBox(
               height: 20.0,

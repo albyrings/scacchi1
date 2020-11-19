@@ -5,8 +5,52 @@ import 'MyNews.dart';
 import 'costanti.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+// crea valori per ogni singolo bool ed avendo tolto
+SharedPreferences localStorage;
+
+Future<List> _getAllPref() async {
+  for (var i = 0; i < 4; i++) {
+    _getPref(i);
+  }
+}
+
+Future<bool> _getPref(indexs) async {
+  SharedPreferences prefs = await SharedPreferences.getInstance();
+  bool startupNumber = prefs.getBool('categoria$indexs');
+  if (indexs == 0) {
+    categoria0 = startupNumber ?? true;
+  } else if (indexs == 1) {
+    categoria1 = startupNumber ?? true;
+  } else if (indexs == 2) {
+    categoria2 = startupNumber ?? true;
+  } else if (indexs == 3) {
+    categoria3 = startupNumber ?? true;
+  }
+}
+
+Future<void> _changepref(indexs) async {
+  await SettingScreen.init();
+  if (indexs == 0) {
+    var a = categoria0;
+    localStorage.setBool('categoria$indexs', a);
+  } else if (indexs == 1) {
+    var a = categoria1;
+    localStorage.setBool('categoria$indexs', a);
+  } else if (indexs == 2) {
+    var a = categoria2;
+    localStorage.setBool('categoria$indexs', a);
+  } else if (indexs == 3) {
+    var a = categoria3;
+    localStorage.setBool('categoria$indexs', a);
+  }
+}
+
 class SettingScreen extends StatefulWidget {
   SettingScreen({Key key}) : super(key: key);
+
+  static Future init() async {
+    localStorage = await SharedPreferences.getInstance();
+  }
 
   @override
   SettingScreenState createState() => SettingScreenState();
@@ -18,7 +62,6 @@ class SettingScreenState extends State<SettingScreen> {
   @override
   void initState() {
     super.initState();
-    _getAllPref();
   }
 
   void _onItemTapped(int index) {
@@ -36,59 +79,6 @@ class SettingScreenState extends State<SettingScreen> {
     }
   }
 
-  Future<List> _getAllPref() async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    for (var i = 0; i < categorieval.length; i++) {
-      bool startupNumber = prefs.getBool('startupNumber$i');
-      if (startupNumber == null) {
-        categorieval1[i] = true;
-      } else {
-        categorieval1[i] = startupNumber;
-      }
-
-      print("categorieval11:$categorieval1");
-    }
-    /*setState(() {
-      categorieval = categorieval1;
-    });*/
-    categorieval = categorieval1;
-
-    print('getAllPref()');
-    print("categorieval:$categorieval");
-    print("categorieval12$categorieval1");
-  }
-
-  Future<bool> _getPref(indexs) async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    bool startupNumber = prefs.getBool('startupNumber$indexs');
-    if (startupNumber == null) {
-      categorieval[indexs] = true;
-    } else {
-      categorieval[indexs] = startupNumber;
-    }
-
-    //categorieval[indexs] = startupNumber ?? true;
-    setState(() {
-      categorieval[indexs] = categorieval[indexs];
-    });
-    print('getPref()');
-  }
-
-  Future<void> _changepref(indexs) async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    bool lastStartupNumber = await _getPref(indexs);
-    //lastStartupNumber = lastStartupNumber ?? true;
-    bool currentBool = lastStartupNumber == true ? false : true;
-    /*setState(() {
-      prefs.setBool('startupNumber', currentBool);
-    });*/
-    prefs.setBool('startupNumber$indexs', currentBool);
-    categorieval[indexs] = currentBool;
-    //return categorieval[indexs];
-    print('changepref');
-    print(categorieval);
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -97,17 +87,6 @@ class SettingScreenState extends State<SettingScreen> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
           top1,
-          /*Container(
-            padding: EdgeInsets.only(left: 35.0, top: 16.0),
-            height: 150.0,
-            child: Text('Bentornato $nome_utente!',
-                style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  fontSize: 50,
-                  fontStyle: FontStyle.italic,
-                ),
-                textAlign: TextAlign.left),
-          ),*/
           Expanded(
             child: Container(
               padding: EdgeInsets.only(left: 16.0),
@@ -120,7 +99,6 @@ class SettingScreenState extends State<SettingScreen> {
               child: ListView(
                 children: [
                   Container(
-                    //height: 56.0, // in logical pixels
                     margin:
                         EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
                     padding: const EdgeInsets.symmetric(horizontal: 8.0),
@@ -146,19 +124,22 @@ class SettingScreenState extends State<SettingScreen> {
                                     ),
                                   ),
                                   trailing: CupertinoSwitch(
-                                    value: categorieval[0],
+                                    value: categoria0,
                                     onChanged: (bool value) {
                                       setState(() {
-                                        categorieval[0] = value;
+                                        categoria0 =
+                                            (categoria0 == true) ? false : true;
+                                        ;
                                       });
+                                      _changepref(0);
                                     },
                                   ),
-                                  onTap: () {
+                                  /*onTap: () {
                                     setState(() {
                                       categorieval[0] = !categorieval[0];
                                       _changepref(0);
-                                    });
-                                  },
+                                    }),),
+                                  },*/
                                 ),
                               )),
                         ]),
@@ -190,21 +171,21 @@ class SettingScreenState extends State<SettingScreen> {
                                     ),
                                   ),
                                   trailing: CupertinoSwitch(
-                                    value: categorieval[1],
+                                    value: categoria1,
                                     onChanged: (bool value) {
                                       setState(() {
-                                        categorieval[1] = value;
+                                        categoria1 =
+                                            (categoria1 == true) ? false : true;
                                       });
-
-                                      print(categorieval);
+                                      _changepref(1);
                                     },
                                   ),
-                                  onTap: () {
+                                  /*onTap: () {
                                     setState(() {
                                       categorieval[1] = !categorieval[1];
                                       _changepref(1);
                                     });
-                                  },
+                                  },*/
                                 ),
                               )),
                         ]),
@@ -236,19 +217,21 @@ class SettingScreenState extends State<SettingScreen> {
                                     ),
                                   ),
                                   trailing: CupertinoSwitch(
-                                    value: categorieval[2],
+                                    value: categoria2,
                                     onChanged: (bool value) {
                                       setState(() {
-                                        categorieval[2] = value;
+                                        categoria2 =
+                                            (categoria2 == true) ? false : true;
                                       });
+                                      _changepref(2);
                                     },
                                   ),
-                                  onTap: () {
+                                  /*onTap: () {
                                     setState(() {
                                       categorieval[2] = !categorieval[2];
                                       _changepref(2);
                                     });
-                                  },
+                                  },*/
                                 ),
                               )),
                         ]),
@@ -280,19 +263,21 @@ class SettingScreenState extends State<SettingScreen> {
                                     ),
                                   ),
                                   trailing: CupertinoSwitch(
-                                    value: categorieval[3],
+                                    value: categoria3,
                                     onChanged: (bool value) {
                                       setState(() {
-                                        categorieval[3] = value;
+                                        categoria3 =
+                                            (categoria3 == true) ? false : true;
+                                        _changepref(3);
                                       });
                                     },
                                   ),
-                                  onTap: () {
+                                  /*onTap: () {
                                     setState(() {
                                       categorieval[3] = !categorieval[3];
                                       _changepref(3);
                                     });
-                                  },
+                                  },*/
                                 ),
                               )),
                         ]),

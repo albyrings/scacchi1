@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'costanti.dart';
 import 'MyArticle.dart';
-import 'dart:async';
-import 'package:url_launcher/url_launcher.dart';
 
 class Articoli extends StatefulWidget {
   Articoli({

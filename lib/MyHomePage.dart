@@ -8,10 +8,6 @@ import 'dart:async';
 String nomeUtente;
 Future<String> getStringValuesSF() async {
   SharedPreferences prefs = await SharedPreferences.getInstance();
-  //Return String
-  /*setState(() {
-      String nome_utente = prefs.getString('nome_utente');
-    });*/
   String nome_utente = prefs.getString('nome_utente');
   print(nome_utente);
   nomeUtente = nome_utente;
@@ -51,8 +47,6 @@ class _MyHomePageState extends State<MyHomePage> {
     getStringValuesSF();
     super.initState();
   }
-
-  //TODO: ICONE IOS
 
   @override
   Widget build(BuildContext context) {

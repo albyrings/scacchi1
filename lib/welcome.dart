@@ -4,7 +4,6 @@ import 'rounded_button.dart';
 import 'costanti.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-//SCRIVI SHAREDPREFERANCE
 SharedPreferences localStorage;
 
 class WelcomeScreen extends StatefulWidget {
@@ -22,14 +21,6 @@ class _WelcomeScreenState extends State<WelcomeScreen>
   AnimationController controller;
   Animation animation;
 
-  /*void addStringToSF() async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    setState(() {
-      prefs.setString('nome_utente', myController.text);
-    });
-    print('Aggiunto $nome_utente');
-  }*/
-
   getStringValuesSF() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     //Return String
@@ -41,7 +32,6 @@ class _WelcomeScreenState extends State<WelcomeScreen>
   @override
   void initState() {
     super.initState();
-    //getStringValuesSF();
 
     controller =
         AnimationController(duration: Duration(seconds: 1), vsync: this);
@@ -70,7 +60,6 @@ class _WelcomeScreenState extends State<WelcomeScreen>
         padding: EdgeInsets.symmetric(horizontal: 24.0),
         child: SafeArea(
           child: Column(
-            //mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: <Widget>[
               top1,
@@ -104,7 +93,7 @@ class _WelcomeScreenState extends State<WelcomeScreen>
                 colour: Colors.grey[800],
                 onPressed: () {
                   String nome_utente = myController.text;
-                  //addStringToSF();
+
                   save() async {
                     await WelcomeScreen.init();
                     localStorage.setString(
@@ -115,13 +104,6 @@ class _WelcomeScreenState extends State<WelcomeScreen>
                   Navigator.pushNamed(context, '/');
                 },
               ),
-              /*RoundedButton(
-              title: 'Registrati',
-              colour: Colors.grey[700],
-              onPressed: () {
-                Navigator.pushNamed(context, '/articoli');
-              },
-            ),*/
             ],
           ),
         ),

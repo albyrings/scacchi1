@@ -1,7 +1,4 @@
 import 'package:flutter/material.dart';
-import 'welcome.dart';
-import 'package:shared_preferences/shared_preferences.dart';
-import 'user.dart';
 
 const color1 = Color(0xffb8150c);
 const color2 = Color(0xff7f0d36);
@@ -32,8 +29,8 @@ List<String> contenuti = [
   'Cerimonia di consegna dei fondi #ScacchiBatteCovid'
 ];
 
-List<bool> categorieval = [true, true, true, true];
-List<bool> categorieval1 = [true, true, true, true];
+// Future<List>categorieval = _getAllPref();
+// List<bool> categorieval1;
 //categorieval =preferenze.json[categoriejson];
 List<String> categorie = [
   'BORSE DI STUDIO,CONCORSI E GARE',
@@ -41,6 +38,11 @@ List<String> categorie = [
   'BACHECA GENITORI',
   'ESAMI DI STATO'
 ];
+
+bool categoria0;
+bool categoria1;
+bool categoria2;
+bool categoria3;
 
 List<String> prodotti = [
   'adesivi',
@@ -61,7 +63,7 @@ int indexliste_1;
   return nome_utente;
 }*/
 
-String nomeUtente;
+/*String nomeUtente;
 Future<String> getStringValuesSF() async {
   SharedPreferences prefs = await SharedPreferences.getInstance();
   //Return String
@@ -72,4 +74,4 @@ Future<String> getStringValuesSF() async {
   print(nome_utente);
   nomeUtente = nome_utente;
   //return nome_utente;
-}
+}*/

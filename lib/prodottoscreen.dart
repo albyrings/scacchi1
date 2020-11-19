@@ -67,10 +67,6 @@ class _ProdottoScreenState extends State<ProdottoScreen> {
               padding: EdgeInsets.only(left: 16.0),
               decoration: BoxDecoration(
                 shape: BoxShape.circle,
-                /* borderRadius: BorderRadius.only(
-                  topLeft: Radius.circular(20.0),
-                  topRight: Radius.circular(20.0),
-                  ),*/
               ),
               child: ListView.builder(
                 itemCount: prodotti.length,
@@ -103,7 +99,6 @@ class _ProdottoScreenState extends State<ProdottoScreen> {
             title: Text('Categorie'),
           ),
         ],
-        //selectedItemColor: Colors.amber[800],
         onTap: _onItemTapped,
         currentIndex: _selectedIndex,
       ),
