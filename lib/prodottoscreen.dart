@@ -78,6 +78,13 @@ class _ProdottoScreenState extends State<ProdottoScreen> {
                   );
                 },
               ),
+              /* GridView.count(
+                crossAxisCount: 2,
+                children: [
+                  MyProdotto(image: 0, title: prodotti[0], indexliste: 0),
+                  MyProdotto(image: 1, title: prodotti[1], indexliste: 1),
+                  ],
+              ),*/
             ),
           ),
         ],
