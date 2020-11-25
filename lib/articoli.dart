@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'costanti.dart';
 import 'MyArticle.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class Articoli extends StatefulWidget {
   Articoli({
@@ -15,7 +16,7 @@ class Articoli extends StatefulWidget {
 }
 
 class _ArticoliState extends State<Articoli> {
-  int _selectedIndex = 1;
+  int _selectedIndex = 0;
 
   void _onItemTapped(int index) {
     setState(() {
@@ -32,22 +33,14 @@ class _ArticoliState extends State<Articoli> {
     }
   }
 
-  /*Future<void> _launched;
-
-  Future<void> _launchURL() async {
+  _launchURL() async {
     const url = 'https://liceoscacchibari.edu.it/';
     if (await canLaunch(url)) {
       await launch(url);
     } else {
       throw 'Could not launch $url';
     }
-    Widget _launchStatus(BuildContext context, AsyncSnapshot<void> snapshot) {
-      if (snapshot.hasError) {
-        return Text('Error: ${snapshot.error}');
-      } else {
-        return const Text('');
-      }
-    }*/
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -58,14 +51,24 @@ class _ArticoliState extends State<Articoli> {
           padding: EdgeInsets.only(top: 5.0),
           children: <Widget>[
             top1,
-            //FutureBuilder<void>(future: _launched, builder: _launchStatus),
-            IconButton(
-              alignment: Alignment.topLeft,
-              icon: Icon(Icons.arrow_back_ios),
-              tooltip: 'Indietro',
-              onPressed: () {
-                Navigator.pop(context);
-              },
+            Row(
+              mainAxisAlignment: MainAxisAlignment.end,
+              mainAxisSize: MainAxisSize.max,
+              children: [
+                /*IconButton(
+                  alignment: Alignment.topLeft,
+                  icon: Icon(Icons.arrow_back_ios),
+                  tooltip: 'Indietro',
+                  onPressed: () {
+                    Navigator.pop(context);
+                  },
+                ),*/
+                IconButton(
+                    icon: Icon(Icons.launch),
+                    alignment: Alignment.bottomCenter,
+                    tooltip: 'Vai sul sito',
+                    onPressed: _launchURL),
+              ],
             ),
             MyArticle(
                 title: titoli[indexliste_1], content: contenuti[indexliste_1]),
@@ -77,18 +80,6 @@ class _ArticoliState extends State<Articoli> {
                 Navigator.pop(context);
               },
             ),
-            /*IconButton(
-                icon: Icon(Icons.arrow_forward_ios),
-                alignment: Alignment.bottomCenter,
-                tooltip: 'Vai sul sito',
-                onPressed: () {
-                  
-                  //setState(() {
-                   // _launched = _launchURL();
-                  //}
-                  );
-                },
-              ),*/
           ],
         ),
       ),
