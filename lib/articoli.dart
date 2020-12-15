@@ -55,14 +55,6 @@ class _ArticoliState extends State<Articoli> {
               mainAxisAlignment: MainAxisAlignment.end,
               mainAxisSize: MainAxisSize.max,
               children: [
-                /*IconButton(
-                  alignment: Alignment.topLeft,
-                  icon: Icon(Icons.arrow_back_ios),
-                  tooltip: 'Indietro',
-                  onPressed: () {
-                    Navigator.pop(context);
-                  },
-                ),*/
                 IconButton(
                     icon: Icon(Icons.launch),
                     alignment: Alignment.bottomCenter,
@@ -86,26 +78,11 @@ class _ArticoliState extends State<Articoli> {
       bottomNavigationBar: BottomNavigationBar(
         backgroundColor: color1,
         elevation: 1000.0,
-        items: const <BottomNavigationBarItem>[
-          BottomNavigationBarItem(
-            icon: Icon(Icons.home),
-            title: Text('Home'),
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.people_alt),
-            title: Text('Vestiario'),
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.settings),
-            title: Text('Categorie'),
-          ),
-        ],
+        items: BNBI,
         currentIndex: _selectedIndex,
-        //selectedItemColor: Colors.amber[800],
         onTap: _onItemTapped,
       ),
     );
     return scaffold;
-    throw UnimplementedError();
   }
 }

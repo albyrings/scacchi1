@@ -6,6 +6,24 @@ const top1 = Image(
   image: AssetImage('images/logo_scacchi.png'),
   height: 150,
 );
+int indexliste_1;
+
+const BNBI = <BottomNavigationBarItem>[
+  BottomNavigationBarItem(
+    icon: Icon(Icons.home),
+    label: 'Home',
+  ),
+  BottomNavigationBarItem(
+    icon: Icon(Icons.people_alt),
+    label: 'Merch',
+  ),
+  BottomNavigationBarItem(
+    icon: Icon(Icons.settings),
+    label: 'Categorie',
+  ),
+];
+
+//DA MODIFICARE CON L'API
 List<String> titoli = [
   "Iscrizioni 2021-22 – Open days al Liceo Scacchi il 18 Dicembre 2020, il 15 e 22 Gennaio 2021"
       "Pubblicazione graduatorie definitive esperti madrelingua per sezioni Cambridge IGCSE",
@@ -31,9 +49,7 @@ List<String> contenuti = [
   'Cerimonia di consegna dei fondi #ScacchiBatteCovid'
 ];
 
-// Future<List>categorieval = _getAllPref();
-// List<bool> categorieval1;
-//categorieval =preferenze.json[categoriejson];
+// DA RIVEDERE IN FASE DI COSTRUZIONE DELL'API
 List<String> categorie = [
   'BORSE DI STUDIO,CONCORSI E GARE',
   'BACHECA STUDENTI',
@@ -46,9 +62,8 @@ bool categoria1;
 bool categoria2;
 bool categoria3;
 
+// DA RIVEDERE IN FASE DI COSTITUZIONE DEL MERCH
 List<String> prodotti = [
   'adesivi',
   't-shirt',
 ];
-
-int indexliste_1;

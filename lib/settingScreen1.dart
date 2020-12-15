@@ -1,11 +1,9 @@
-import 'package:A.Scacchi/main.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'MyNews.dart';
 import 'costanti.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-// crea valori per ogni singolo bool ed avendo tolto
 SharedPreferences localStorage;
 
 Future<List> _getAllPref() async {
@@ -105,11 +103,9 @@ class SettingScreenState extends State<SettingScreen> {
                     decoration: BoxDecoration(
                         color: Colors.grey[400],
                         borderRadius: BorderRadius.circular(20.0)),
-                    // Row is a horizontal, linear layout.
                     child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         mainAxisSize: MainAxisSize.min,
-                        // <Widget> is the type of items in the list.
                         children: <Widget>[
                           Flexible(
                               flex: 1,
@@ -129,34 +125,24 @@ class SettingScreenState extends State<SettingScreen> {
                                       setState(() {
                                         categoria0 =
                                             (categoria0 == true) ? false : true;
-                                        ;
                                       });
                                       _changepref(0);
                                     },
                                   ),
-                                  /*onTap: () {
-                                    setState(() {
-                                      categorieval[0] = !categorieval[0];
-                                      _changepref(0);
-                                    }),),
-                                  },*/
                                 ),
                               )),
                         ]),
                   ),
                   Container(
-                    //height: 56.0, // in logical pixels
                     margin:
                         EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
                     padding: const EdgeInsets.symmetric(horizontal: 8.0),
                     decoration: BoxDecoration(
                         color: Colors.grey[400],
                         borderRadius: BorderRadius.circular(20.0)),
-                    // Row is a horizontal, linear layout.
                     child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         mainAxisSize: MainAxisSize.min,
-                        // <Widget> is the type of items in the list.
                         children: <Widget>[
                           Flexible(
                               flex: 1,
@@ -180,29 +166,20 @@ class SettingScreenState extends State<SettingScreen> {
                                       _changepref(1);
                                     },
                                   ),
-                                  /*onTap: () {
-                                    setState(() {
-                                      categorieval[1] = !categorieval[1];
-                                      _changepref(1);
-                                    });
-                                  },*/
                                 ),
                               )),
                         ]),
                   ),
                   Container(
-                    //height: 56.0, // in logical pixels
                     margin:
                         EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
                     padding: const EdgeInsets.symmetric(horizontal: 8.0),
                     decoration: BoxDecoration(
                         color: Colors.grey[400],
                         borderRadius: BorderRadius.circular(20.0)),
-                    // Row is a horizontal, linear layout.
                     child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         mainAxisSize: MainAxisSize.min,
-                        // <Widget> is the type of items in the list.
                         children: <Widget>[
                           Flexible(
                               flex: 1,
@@ -226,29 +203,20 @@ class SettingScreenState extends State<SettingScreen> {
                                       _changepref(2);
                                     },
                                   ),
-                                  /*onTap: () {
-                                    setState(() {
-                                      categorieval[2] = !categorieval[2];
-                                      _changepref(2);
-                                    });
-                                  },*/
                                 ),
                               )),
                         ]),
                   ),
                   Container(
-                    //height: 56.0, // in logical pixels
                     margin:
                         EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
                     padding: const EdgeInsets.symmetric(horizontal: 8.0),
                     decoration: BoxDecoration(
                         color: Colors.grey[400],
                         borderRadius: BorderRadius.circular(20.0)),
-                    // Row is a horizontal, linear layout.
                     child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         mainAxisSize: MainAxisSize.min,
-                        // <Widget> is the type of items in the list.
                         children: <Widget>[
                           Flexible(
                               flex: 1,
@@ -272,12 +240,6 @@ class SettingScreenState extends State<SettingScreen> {
                                       });
                                     },
                                   ),
-                                  /*onTap: () {
-                                    setState(() {
-                                      categorieval[3] = !categorieval[3];
-                                      _changepref(3);
-                                    });
-                                  },*/
                                 ),
                               )),
                         ]),
@@ -287,18 +249,15 @@ class SettingScreenState extends State<SettingScreen> {
                       Navigator.pushNamed(context, '/welcome');
                     },
                     child: Container(
-                      //height: 56.0, // in logical pixels
                       margin:
                           EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
                       padding: const EdgeInsets.symmetric(horizontal: 8.0),
                       decoration: BoxDecoration(
                           color: Colors.grey[400],
                           borderRadius: BorderRadius.circular(20.0)),
-                      // Row is a horizontal, linear layout.
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         mainAxisSize: MainAxisSize.min,
-                        // <Widget> is the type of items in the list.
                         children: <Widget>[
                           MySet(
                             title: "Inserisci il tuo nome: ",
@@ -316,21 +275,7 @@ class SettingScreenState extends State<SettingScreen> {
       bottomNavigationBar: BottomNavigationBar(
         backgroundColor: color1,
         elevation: 1000.0,
-        items: const <BottomNavigationBarItem>[
-          BottomNavigationBarItem(
-            icon: Icon(Icons.home),
-            title: Text('Home'),
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.people_alt),
-            title: Text('Vestiario'),
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.settings),
-            title: Text('Categorie'),
-          ),
-        ],
-        //selectedItemColor: Colors.amber[800],
+        items: BNBI,
         onTap: _onItemTapped,
         currentIndex: _selectedIndex,
       ),

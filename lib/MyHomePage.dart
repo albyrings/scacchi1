@@ -24,7 +24,6 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
   int _selectedIndex = 0;
 
   void _onItemTapped(int index) {
@@ -102,21 +101,7 @@ class _MyHomePageState extends State<MyHomePage> {
       bottomNavigationBar: BottomNavigationBar(
         backgroundColor: color1,
         elevation: 1000.0,
-        items: const <BottomNavigationBarItem>[
-          BottomNavigationBarItem(
-            icon: Icon(Icons.home),
-            title: Text('Home'),
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.people_alt),
-            title: Text('Vestiario'),
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.settings),
-            title: Text('Categorie'),
-          ),
-        ],
-        //selectedItemColor: Colors.amber[800],
+        items: BNBI,
         onTap: _onItemTapped,
         currentIndex: _selectedIndex,
       ),

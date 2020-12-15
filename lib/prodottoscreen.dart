@@ -12,14 +12,7 @@ class ProdottoScreen extends StatefulWidget {
 }
 
 class _ProdottoScreenState extends State<ProdottoScreen> {
-  int _counter = 0;
   int _selectedIndex = 1;
-
-  void _incrementCounter() {
-    setState(() {
-      _counter++;
-    });
-  }
 
   void _onItemTapped(int index) {
     setState(() {
@@ -38,13 +31,6 @@ class _ProdottoScreenState extends State<ProdottoScreen> {
 
   @override
   Widget build(BuildContext context) {
-    const colorsLinearGradient = [
-      Colors.grey,
-      Colors.deepOrange,
-      Colors.yellowAccent,
-      color1,
-      color2
-    ];
     return Scaffold(
       backgroundColor: color2,
       body: Column(
@@ -78,13 +64,6 @@ class _ProdottoScreenState extends State<ProdottoScreen> {
                   );
                 },
               ),
-              /* GridView.count(
-                crossAxisCount: 2,
-                children: [
-                  MyProdotto(image: 0, title: prodotti[0], indexliste: 0),
-                  MyProdotto(image: 1, title: prodotti[1], indexliste: 1),
-                  ],
-              ),*/
             ),
           ),
         ],
@@ -92,20 +71,7 @@ class _ProdottoScreenState extends State<ProdottoScreen> {
       bottomNavigationBar: BottomNavigationBar(
         backgroundColor: color1,
         elevation: 1000.0,
-        items: const <BottomNavigationBarItem>[
-          BottomNavigationBarItem(
-            icon: Icon(Icons.home),
-            title: Text('Home'),
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.people_alt),
-            title: Text('Vestiario'),
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.settings),
-            title: Text('Categorie'),
-          ),
-        ],
+        items: BNBI,
         onTap: _onItemTapped,
         currentIndex: _selectedIndex,
       ),
