@@ -10,7 +10,7 @@ Future<String> getStringValuesSF() async {
   SharedPreferences prefs = await SharedPreferences.getInstance();
   String nome_utente = prefs.getString('nome_utente');
   print(nome_utente);
-  nomeUtente = nome_utente;
+  nomeUtente = nome_utente == null ? ' ' : nome_utente;
   //return nome_utente;
 }
 
