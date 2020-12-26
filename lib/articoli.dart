@@ -1,7 +1,20 @@
+import 'package:A.Scacchi/loadingScreen.dart';
 import 'package:flutter/material.dart';
 import 'costanti.dart';
 import 'MyArticle.dart';
 import 'package:url_launcher/url_launcher.dart';
+import 'package:http/http.dart' as http;
+
+// String sentence;
+// Future<String> getSentence() async {
+//   final response = await http.get('https://api.kanye.rest/');
+//   if (response.statusCode == 200) {
+//     String sentence1 = response.body;
+//     sentence = sentence1;
+//   } else {
+//     throw Exception('Unable to fetch products from the REST API');
+//   }
+// }
 
 class Articoli extends StatefulWidget {
   Articoli({
@@ -14,6 +27,12 @@ class Articoli extends StatefulWidget {
   @override
   _ArticoliState createState() => _ArticoliState();
 }
+
+// @override
+// void initState() {
+//   getSentence();
+//   //super.initState();
+// }
 
 class _ArticoliState extends State<Articoli> {
   int _selectedIndex = 0;
@@ -63,7 +82,10 @@ class _ArticoliState extends State<Articoli> {
               ],
             ),
             MyArticle(
-                title: titoli[indexliste_1], content: contenuti[indexliste_1]),
+                title: titoli[indexliste_1],
+                content:
+                    //sentence
+                    contenuti[indexliste_1]),
             IconButton(
               icon: Icon(Icons.arrow_back_ios),
               alignment: Alignment.bottomCenter,

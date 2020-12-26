@@ -1,7 +1,20 @@
 import 'dart:ui';
+import 'dart:async';
 import 'package:flutter/material.dart';
 import 'costanti.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+// import 'package:http/http.dart' as http;
+
+// String sentence;
+// Future<String> getSentence() async {
+//   final response = await http.get('https://api.kanye.rest/');
+//   if (response.statusCode == 200) {
+//     String sentence1 = response.body;
+//     sentence = sentence1;
+//   } else {
+//     throw Exception('Unable to fetch products from the REST API');
+//   }
+// }
 
 String nomeUtente;
 Future<String> getStringValuesSF() async {
@@ -9,7 +22,6 @@ Future<String> getStringValuesSF() async {
   String nome_utente = prefs.getString('nome_utente');
   print(nome_utente);
   nomeUtente = nome_utente;
-  //return nome_utente;
 }
 
 Future _getAllPref() async {
@@ -50,6 +62,7 @@ class LoadingScreenState extends State<LoadingScreen> {
         body: GestureDetector(
           onTap: () {
             _getAllPref();
+            //getSentence();
             Navigator.pushNamed(context, '/');
           },
           child: new InkWell(
