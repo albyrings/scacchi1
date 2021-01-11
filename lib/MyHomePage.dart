@@ -44,6 +44,7 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   void initState() {
     getStringValuesSF();
+    getSentence();
     super.initState();
   }
 
