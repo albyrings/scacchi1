@@ -40,6 +40,8 @@ class LoadingScreen extends StatefulWidget {
 @override
 void initState() {
   getStringValuesSF();
+  getSentence();
+  initState();
 }
 
 class LoadingScreenState extends State<LoadingScreen> {
